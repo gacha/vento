@@ -1,15 +1,28 @@
-# vent_to_mqtt
+# VENTO to MQTT
 
-Dieses Projekt kümmert sich darum, Baulberg Ventilatoren mit WLAN Schnittstelle in eine Hausautomation mit MQTT Dienst zu integrieren.
+## What problem does this solve?
 
-Die Entwicklung erfolgt auf einen Raspberry mit Openhab.
-Das Script ist mit Python 3.7 getestet und kann den Status des Ventilators senden, zudem über den Command Channel ein/ausgeschaltet werden.
+There are these single-room air handling units with heat recovery like
+VENTO Expert A50-1, A30-1 and others from [Blauberg](https://blaubergventilatoren.de).
 
+These units are controlled by a mobile app, where the communication with the device
+is done via [UDP transport protocol](https://blaubergventilatoren.de/uploads/download/ventoexpertduowsmarthousev11en.pdf).
 
-Die .py Datei auf dem System als Dienst starten lassen.
-Diese sendet permanent den Status in den einzelnen Bereichen.
+This is a Python service, which allows to control the unit via [MQTT](https://en.wikipedia.org/wiki/MQTT) protocol.
 
-In der Version 0.5 wird kein externes Parsen mehr benötigt.
-Zudem wurde die Fehlerbehandlung verbessert und es gibt nur noch einen Status, als JSON.
+## How to use it
 
-Feedback und Mitentwicklung sind gerne erwünscht.
+Install the only dependency [paho-mqtt](https://pypi.org/project/paho-mqtt) >=2.0 and then run:
+
+    python ./vento.py --vento-host <unit-hostname> --mqtt-host <mqtt-server-hostname>
+
+## History
+
+This is a fork of https://github.com/mhbosch/vent_to_mqtt
+
+Changes made:
+
+ - translated from German
+ - added logging
+ - added ability to pass commandline arguments
+ - minor code improvements
