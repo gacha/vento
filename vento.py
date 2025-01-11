@@ -36,8 +36,7 @@ args = parser.parse_args()
 logger = logging.getLogger(__name__)
 logging.basicConfig(
     level=args.debug,
-    format="{levelname} - {message}",
-    style="{",
+    format="%(asctime)s [%(levelname)s] %(message)s",
 )
 
 
