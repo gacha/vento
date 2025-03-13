@@ -30,12 +30,14 @@ parser.add_argument("--mqtt-port", type=int, default=1883, help="MQTT server por
 parser.add_argument("--mqtt-user", help="MQTT server username")
 parser.add_argument("--mqtt-pass", help="MQTT server password")
 parser.add_argument("--mqtt-topic", default="blauberg-vento", help="MQTT topic")
+parser.add_argument("--log", default=None, help="Log file path")
 parser.add_argument("--debug", nargs='?', const=10, default=20, help="With debug output")
 args = parser.parse_args()
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
     level=args.debug,
+    filename=args.log,
     format="%(asctime)s [%(levelname)s] %(message)s",
 )
 
